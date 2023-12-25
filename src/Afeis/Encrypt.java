@@ -1,3 +1,5 @@
+package Afeis;
+
 import java.io.*;
 
 public class Encrypt {
@@ -8,7 +10,7 @@ public class Encrypt {
         int len;
         int passwordCompute = Util.passwordCompute(password);
         try {
-            File file = new File(new RandomName().randomName(2, 10) + ".txt");
+            File file = new File(new RandomName().randomName(2, 10));
             long min = Util.File.length();
             if (min > passwordCompute) {
                 min = passwordCompute;

@@ -1,3 +1,5 @@
+package Afeis;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -51,7 +53,7 @@ public class Util {
         boolean have = true;
         if (files != null)
             for (File file : files) {
-                if (file.getName().equals(Util.FileName)) {
+                if (file.getName().equalsIgnoreCase(Util.FileName)) {
                     have = false;
                     break;
                 }

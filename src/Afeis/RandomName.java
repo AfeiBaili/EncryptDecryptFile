@@ -1,3 +1,5 @@
+package Afeis;
+
 import java.util.Random;
 
 public class RandomName {
