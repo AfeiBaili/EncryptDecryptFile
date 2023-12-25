@@ -13,7 +13,7 @@ public class Encrypt {
         FileOutputStream outputStream = null;
         int len;
         try {
-            File file = new File(new RandomName().randomName(2, 10));
+            File file = new File(new RandomName().randomName(2, 10)+".afei");
 
             byte[] data = new byte[Util.passwordCompute(password)];
             outputStream = new FileOutputStream(file);
