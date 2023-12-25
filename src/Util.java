@@ -26,4 +26,16 @@ public class Util {
         if (have)
             throw new RuntimeException("找不到文件");
     }
+
+    public static void yOrN(char c) {
+        switch (c) {
+            case 'y', 'Y':
+                return;
+            case 'n', 'N':
+                Encrypt.isEncrypt = false;
+                return;
+            default:
+                throw new RuntimeException("输入错误！");
+        }
+    }
 }

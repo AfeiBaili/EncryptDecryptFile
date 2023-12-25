@@ -2,6 +2,7 @@ import java.io.*;
 
 public class Encrypt {
     static String FileName = "";
+    static boolean isEncrypt = true;
 
     public static void input(String fileName, String password) {
         FileName = fileName;
