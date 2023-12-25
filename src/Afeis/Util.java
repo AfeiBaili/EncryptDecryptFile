@@ -77,14 +77,13 @@ public class Util {
 
     //密码计算
     static int passwordCompute(String password) {
-
-        byte[] passwordBytes = password.getBytes();//转化为字节
-        int sum = 0;
-        for (byte passwordByte : passwordBytes) {
-            sum += passwordByte;
-        }
-        if (sum < 0) {
-            sum = -sum;
+        int sum = password.hashCode();
+        while (true) {
+            if (sum > 4096) {
+                sum = sum >> 1;
+            } else {
+                break;
+            }
         }
         return sum;
     }
