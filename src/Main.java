@@ -10,7 +10,7 @@ public class Main {
             Encrypt.FileName = scanner.next();
             System.out.println();
             Util.isHave();//判断
-            System.out.print("请输入加密密码(解密需加密密码):");
+            System.out.print("请输入加密密码：");
             String password = scanner.next();
             System.out.println();
             Encrypt.input(Encrypt.FileName, password);//加密

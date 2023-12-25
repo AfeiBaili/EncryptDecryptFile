@@ -25,9 +25,18 @@ public class Encrypt {
     }
 
     public static void encrypt(FileInputStream inputStream, String password) {
+        //密码计算
         byte[] passwordBytes = password.getBytes();//转化为字节
+        int sum = 0;
+        for (byte passwordByte : passwordBytes) {
+            sum += passwordByte;
+        }
+        if (sum < 0) {
+            sum = -sum;
+        }
+        sum = sum * 10;
 
-        byte[] data = new byte[1023];
+        byte[] data = new byte[sum];
         FileOutputStream outputStream = null;
         try {
             int len;
