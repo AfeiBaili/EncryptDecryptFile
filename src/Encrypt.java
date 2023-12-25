@@ -60,5 +60,7 @@ public class Encrypt {
         }
     }
 
+    public static void decrypt() {
 
+    }
 }
