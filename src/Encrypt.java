@@ -26,6 +26,7 @@ public class Encrypt {
 
     public static void encrypt(FileInputStream inputStream, String password) {
         byte[] passwordBytes = password.getBytes();//转化为字节
+
         byte[] data = new byte[1023];
         FileOutputStream outputStream = null;
         try {
@@ -35,7 +36,6 @@ public class Encrypt {
                 byte[] upsideDownData = Util.upsideDown(data);
                 outputStream.write(upsideDownData, 0, len);
             }
-            outputStream.write(Util.upsideDown(passwordBytes));
             //End
         } catch (IOException e) {
             System.out.println("读取写出异常");
