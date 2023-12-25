@@ -1,9 +1,8 @@
 import java.io.*;
-import java.util.Arrays;
 
 public class Encrypt {
 
-    public static void encrypt(FileInputStream inputStream, String password) {
+    static void encrypt(FileInputStream inputStream, String password) {
         byte[] nameBytes = Util.FileName.getBytes();
         FileOutputStream outputStream = null;
         int len;

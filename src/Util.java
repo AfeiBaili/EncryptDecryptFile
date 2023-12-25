@@ -9,7 +9,7 @@ public class Util {
     static boolean isEncrypt = true;
 
 
-    public static void input(String fileName, String password) {
+    static void input(String fileName, String password) {
         Util.FileName = fileName;
         //读取模块
         Util.File = new File(Util.FileName);//读取文件
@@ -35,7 +35,7 @@ public class Util {
     }
 
     //颠倒数组
-    public static byte[] upsideDown(byte[] bytes) {
+    static byte[] upsideDown(byte[] bytes) {
         for (int start = 0, end = bytes.length; start <= end >> 1; start++, end--) {
             byte temp = bytes[start];
             bytes[start] = bytes[end - 1];
@@ -45,7 +45,7 @@ public class Util {
     }
 
     //判断文件是否存在
-    public static void isHave() {
+    static void isHave() {
         File fileAll = new File(System.getProperty("user.dir"));
         File[] files = fileAll.listFiles();
         boolean have = true;
@@ -61,7 +61,7 @@ public class Util {
     }
 
     //Yes或No
-    public static void yOrN(char c) {
+    static void yOrN(char c) {
         switch (c) {
             case 'y', 'Y':
                 return;
@@ -74,7 +74,7 @@ public class Util {
     }
 
     //密码计算
-    public static int passwordCompute(String password) {
+    static int passwordCompute(String password) {
 
         byte[] passwordBytes = password.getBytes();//转化为字节
         int sum = 0;

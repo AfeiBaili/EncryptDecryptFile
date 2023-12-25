@@ -2,10 +2,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Arrays;
 
 public class Decrypt {
-    public static void decrypt(FileInputStream inputStream, String password) {
+    static void decrypt(FileInputStream inputStream, String password) {
         FileOutputStream outputStream = null;
         long min = Util.File.length();
         int passwordCompute = Util.passwordCompute(password);
