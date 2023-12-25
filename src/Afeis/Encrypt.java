@@ -1,6 +1,10 @@
 package Afeis;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Arrays;
 
 public class Encrypt {
 
@@ -8,21 +12,19 @@ public class Encrypt {
         byte[] nameBytes = Util.FileName.getBytes();
         FileOutputStream outputStream = null;
         int len;
-        int passwordCompute = Util.passwordCompute(password);
         try {
             File file = new File(new RandomName().randomName(2, 10));
-            long min = Util.File.length();
-            if (min > passwordCompute) {
-                min = passwordCompute;
-            }
-            byte[] data = new byte[(int) min];
+
+            byte[] data = new byte[Util.passwordCompute(password)];
             outputStream = new FileOutputStream(file);
             outputStream.write(nameBytes.length);
             outputStream.write(nameBytes, 0, nameBytes.length);
 
             while ((len = inputStream.read(data)) != -1) {
-                Util.upsideDown(data);
-                outputStream.write(data, 0, len);
+                byte[] temp = Arrays.copyOf(data, len);
+                Util.upsideDown(temp);
+                outputStream.write(temp, 0, len);
+                System.out.println(Arrays.toString(temp));
             }
             //End
         } catch (IOException e) {
