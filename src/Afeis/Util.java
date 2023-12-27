@@ -6,21 +6,22 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class Util {
-    static String FileName = "";
-    static File File;
+    static String fileName = "";
+    static File file;
     static boolean isEncrypt = true;
-
+    static long byteLength = 0;
+    static long currentByteLength = 0;
 
     static void input(String fileName, String password) {
-        Util.FileName = fileName;
+        Util.fileName = fileName;
         //读取模块
-        Util.File = new File(Util.FileName);//读取文件
+        Util.file = new File(Util.fileName);//读取文件
         FileInputStream inputStream = null;//设置输入流
         try {
             if (isEncrypt) {
-                Encrypt.encrypt(inputStream = new FileInputStream(Util.File), password);//调用加密方法
+                Encrypt.encrypt(inputStream = new FileInputStream(Util.file), password);//调用加密方法
             } else {
-                Decrypt.decrypt(inputStream = new FileInputStream(Util.File), password);//调用解密方法
+                Decrypt.decrypt(inputStream = new FileInputStream(Util.file), password);//调用解密方法
             }
 
         } catch (FileNotFoundException e) {
@@ -53,13 +54,13 @@ public class Util {
         boolean have = true;
         if (files != null)
             for (File file : files) {
-                if (file.getName().equalsIgnoreCase(Util.FileName)) {
+                if (file.getName().equalsIgnoreCase(Util.fileName)) {
                     have = false;
                     break;
                 }
             }
         if (have)
-            throw new RuntimeException("找不到文件");
+            throw new Afeis.FileNotFoundException("找不到文件");
     }
 
     //Yes或No
@@ -79,12 +80,17 @@ public class Util {
     static int passwordCompute(String password) {
         int sum = password.hashCode();
         while (true) {
-            if (sum > 4096) {
+            if (sum > 1024 * 20) {
                 sum = sum >> 1;
             } else {
                 break;
             }
         }
         return sum;
+    }
+
+    static void progressBarPrint() {
+        ProgressBar.percentage = (float) currentByteLength / byteLength * 100;
+        ProgressBar.printProgress();
     }
 }
